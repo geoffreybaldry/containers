@@ -5,7 +5,8 @@ function App() {
 
   useEffect(() => {
     // fetch('https://dummy.restapiexample.com/api/v1/employees')
-    fetch('http://localhost:8080')
+    //fetch('http://localhost:8080')
+    fetch('/api')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.error(error))

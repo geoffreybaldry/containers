@@ -1,5 +1,5 @@
 # Use an official Node runtime as a base image
-FROM node:14-alpine as build
+FROM node:18-alpine as build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -15,6 +15,8 @@ RUN npm run build
 FROM nginx:alpine
 # Copy build files to Nginx server directory
 COPY --from=build /app/build /usr/share/nginx/html
+# Copy nginx configuration file from project to the container
+COPY nginx.conf /etc/nginx/nginx.conf
 # Expose port 80 to the outside world
 EXPOSE 80
 # Command to run the Nginx server
